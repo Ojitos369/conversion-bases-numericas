@@ -1,6 +1,8 @@
-#from src.extras import pausar, limpiar, convertir
+#from src.extras import pausar
+#import math
 
 def conversion(original, cambio):
+    cambio = int(cambio)
     numerosCambio = []
     for i in range(26):
         numerosCambio.append(i+10)
@@ -8,11 +10,12 @@ def conversion(original, cambio):
     letrasCambio = letras.split(',')
     continuar = True
     resultados = []
-    aux = original
+    decimales = float(original)%1
+    aux = int(float(original)-decimales)
     while continuar:
-        residuo = int(int(aux)%int(cambio))
-        aux -= int(residuo)
-        aux /= int(cambio)
+        residuo = int(aux%cambio)
+        aux -= residuo
+        aux /= cambio
         if residuo > 9:
             for i in range(len(numerosCambio)):
                 if residuo == numerosCambio[i]:
@@ -22,4 +25,19 @@ def conversion(original, cambio):
         if aux == 0:
             continuar = False
     resultados.reverse()
+    
+    if decimales > 0:
+        resultados.append('.')
+        for i in range(5):
+            aux2 = decimales * cambio
+            frac = int(aux2)
+            decimales = aux2-frac
+            if frac > 9:
+                for j in range(len(numerosCambio)):
+                    if frac == numerosCambio[j]:
+                        frac = letrasCambio[j]
+            resultados.append(frac)
+            if decimales == 0:
+                break
+            
     return resultados

@@ -22,17 +22,22 @@ Elige una opcion: ''')
     return opc
 
 def numeroDecimal(text = 'Ingresa un numero: ', textError='Numero no valido'):
+    valido = '0123456789.'
     inc = True
     n = 0
     while inc:
         limpiar()
         n = input(text)
-        n = convertir(n)
-        if n > 0 or n < 0:
-            inc = False
-        else:
-            print(textError)
-            pausar()
+        correcto = True
+        #n = convertir(n)
+        for i in range(len(n)):
+            if n[i] in valido:
+                pass
+            else:
+                correcto = False
+                print(textError)
+                pausar()
+        if correcto: inc = False
     return n
 
 def numero(valido, base=10, textError='Numero no valido'):
@@ -51,14 +56,14 @@ def numero(valido, base=10, textError='Numero no valido'):
         else:
             print(textError)
             pausar()
-    return list(n)
+    return n
 
 def general(textError='Numero no valido'):
     letras = 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z'
     letrasCambio = letras.split(',')
     inc = True
     base = 0
-    validas = ''
+    validas = '.'
     conversiones = []
     while inc:
         limpiar()
