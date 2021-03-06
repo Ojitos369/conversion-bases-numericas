@@ -91,7 +91,7 @@ def general(textError='Numero no valido'):
                 aux = False
                 break
         if aux: inc = False
-    for i in range(base+1):
+    for i in range(base):
         if i < 10:
             validas = f'{validas}{i}'
             print(f'menor de 10{i}')
