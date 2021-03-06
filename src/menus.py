@@ -11,10 +11,11 @@ def menuMain():
 3.- Entrada Octal
 4.- Entrada Hexadecimal
 5.- Conversion Libre
-6.- Salir
+6.- Configurar el numero de decimales
+7.- Salir
 Elige una opcion: ''')
         opc = convertir(opc)
-        if opc > 0 and opc < 7:
+        if opc > 0 and opc < 8:
             inc = False
         else:
             print('Opcion no valida. Intenta nuevamente')
@@ -40,13 +41,13 @@ def numeroDecimal(text = 'Ingresa un numero: ', textError='Numero no valido'):
         if correcto: inc = False
     return n
 
-def numero(valido, base=10, textError='Numero no valido'):
+def numero(valido,texto='Ingresa un numero: ', textError='Numero no valido'):
     inc = True
     n = 0
     while inc:
         correcto = True
         limpiar()
-        n = input(f'Ingresa un numero base {base}: ')
+        n = input(texto)
         n = n.upper()
         for i in range(len(n)):
             if not (n[i] in valido):
@@ -107,5 +108,5 @@ def general(textError='Numero no valido'):
     if base == 10:
         n = numeroDecimal()
     else:
-        n = numero(validas,base)
+        n = numero(validas)
     return [n,base,conversiones]

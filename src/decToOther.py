@@ -1,7 +1,7 @@
 #from src.extras import pausar
 #import math
 
-def conversion(original, cambio):
+def conversion(original, cambio,numDecimales):
     cambio = int(cambio)
     numerosCambio = []
     for i in range(26):
@@ -28,7 +28,7 @@ def conversion(original, cambio):
     
     if decimales > 0:
         resultados.append('.')
-        for i in range(5):
+        for i in range(numDecimales):
             aux2 = decimales * cambio
             frac = int(aux2)
             decimales = aux2-frac

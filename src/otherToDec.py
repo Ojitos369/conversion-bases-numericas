@@ -1,5 +1,5 @@
 import math
-def conversion(n,base):
+def conversion(n,base,decimales):
     numerosCambio = []
     fraccionarios = False
     for i in range(26):
@@ -23,7 +23,7 @@ def conversion(n,base):
     if fraccionarios:
         resultado = float(resultado)
         noDecimales = len(fraccionarios)
-        if noDecimales > 5: noDecimales = 5
+        if noDecimales > decimales: noDecimales = decimales
         for i in range(noDecimales):
             aux = fraccionarios[i]
             if fraccionarios[i] in letras:
